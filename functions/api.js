@@ -271,13 +271,6 @@ router.get("/upcomingAnimeAniList", async (req, res) => {
   }
 });
 
-// Add router to the app
-app.use("/", router);
-
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
-
 // Export handler for serverless deployment
+app.use("/.netlify/functions/api", router);
 module.exports.handler = serverless(app);
